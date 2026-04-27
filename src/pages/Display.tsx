@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentSlot, getDayOfWeek, DAY_NAMES } from "@/lib/schedule";
-import { Coffee, Sun, BookOpen, MapPin, User, Clock, Sparkles } from "lucide-react";
+import { Coffee, Sun, BookOpen, MapPin, User, Clock, Sparkles, LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type SessionRow = {
   id: string;
@@ -98,16 +100,23 @@ const Display = () => {
             <p className="text-sm text-muted-foreground">{DAY_NAMES[dow]} • {now.toLocaleDateString()}</p>
           </div>
         </div>
-        <div className="text-right">
-          <div className="font-display text-4xl lg:text-5xl font-bold text-gradient tabular-nums">
-            {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-          </div>
-          {slot && (
-            <div className="text-xs text-muted-foreground mt-1 flex items-center gap-1 justify-end">
-              <Clock className="h-3 w-3" />
-              Period {slot.start}–{slot.end}
+        <div className="flex items-center gap-4">
+          <div className="text-right">
+            <div className="font-display text-4xl lg:text-5xl font-bold text-gradient tabular-nums">
+              {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </div>
-          )}
+            {slot && (
+              <div className="text-xs text-muted-foreground mt-1 flex items-center gap-1 justify-end">
+                <Clock className="h-3 w-3" />
+                Period {slot.start}–{slot.end}
+              </div>
+            )}
+          </div>
+          <Link to="/auth">
+            <Button variant="outline" size="sm">
+              <LogIn className="h-4 w-4 mr-2" /> Login
+            </Button>
+          </Link>
         </div>
       </header>
 
