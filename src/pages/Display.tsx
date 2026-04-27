@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentSlot, getDayOfWeek, DAY_NAMES } from "@/lib/schedule";
-import { Coffee, Sun, BookOpen, MapPin, User, Clock, Sparkles } from "lucide-react";
+import { Coffee, Sun, BookOpen, MapPin, User, Clock, Sparkles, LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type SessionRow = {
   id: string;
