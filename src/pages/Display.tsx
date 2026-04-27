@@ -145,29 +145,6 @@ const Display = () => {
             </>
           )}
 
-          {/* Today's schedule strip */}
-          <div className="mt-8 gradient-card border border-border rounded-2xl p-5">
-            <h3 className="font-display text-sm uppercase tracking-wider text-muted-foreground mb-3">Today's schedule</h3>
-            <div className="flex flex-wrap gap-2">
-              {todaySlots.map((s, i) => {
-                const active = slot && s.start === slot.start && s.end === slot.end;
-                return (
-                  <div
-                    key={i}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium tabular-nums border transition-all ${
-                      active
-                        ? "gradient-hero text-primary-foreground border-transparent glow"
-                        : s.type === "break"
-                        ? "bg-warning/10 text-warning border-warning/30"
-                        : "bg-secondary text-muted-foreground border-border"
-                    }`}
-                  >
-                    {s.start}–{s.end} {s.type === "break" ? "☕" : ""}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </main>
 
         {/* Right: announcements */}
