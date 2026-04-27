@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { getCurrentSlot, getDayOfWeek, DAY_NAMES, buildDaySlots } from "@/lib/schedule";
+import { getCurrentSlot, getDayOfWeek, DAY_NAMES } from "@/lib/schedule";
 import { Coffee, Sun, BookOpen, MapPin, User, Clock, Sparkles } from "lucide-react";
 
 type SessionRow = {
@@ -84,7 +84,6 @@ const Display = () => {
   };
 
   const isBreak = slot?.type === "break";
-  const todaySlots = buildDaySlots();
 
   return (
     <div className="min-h-screen p-6 lg:p-8">
